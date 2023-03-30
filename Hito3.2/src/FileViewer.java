@@ -19,7 +19,7 @@ public class FileViewer extends JFrame implements ActionListener, ItemListener {
 
         // Crear el JComboBox con los nombres de archivo
         fileComboBox = new JComboBox<String>(new String[] {
-                "ELIGE UN LENGUAJE DE PROGRAMACIÓN", "python.txt", "c.txt", "java.txt"
+                "Elige una opción", "python.txt", "c.txt", "java.txt"
         });
         fileComboBox.addItemListener(this);
         fileComboBox.setPreferredSize(new Dimension(300, 25));
@@ -52,7 +52,7 @@ public class FileViewer extends JFrame implements ActionListener, ItemListener {
         frame.add(panel3, BorderLayout.SOUTH);
 
         // Mostrar la ventana
-        frame.pack();
+        frame.setSize(900,500);
         frame.setVisible(true);
     }
 
@@ -76,11 +76,9 @@ public class FileViewer extends JFrame implements ActionListener, ItemListener {
                 }
                 fileTextArea.setText(sb.toString());
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Error al abrir el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Error al abrir el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
     }
-
-
 }
