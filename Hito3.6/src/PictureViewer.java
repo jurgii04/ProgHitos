@@ -74,6 +74,29 @@ public class PictureViewer extends JFrame {
                 // Obtener la fecha seleccionada del datePicker
                 Date fecha = datePicker.getDate();
 
+                if (fecha == null) {
+                    return;
+                }
+
+                // Crear un objeto SimpleDateFormat con el formato deseado
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+                // Formatear la fecha como un String en el formato deseado
+                String fechaFormateada = formato.format(fecha);
+                String name = photographerComboBox.getSelectedItem().toString();
+                String [] titulos = gestorDb.select("pictures", "Title","PhotographerId IN (SELECT PhotographerId FROM photographers WHERE nombre = '" + name + "' AND fecha > '" + fechaFormateada + "')");
+
+
+                pictureList.setListData(titulos);
+            }
+        });
+
+        datePicker.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener la fecha seleccionada del datePicker
+                Date fecha = datePicker.getDate();
+
                 // Crear un objeto SimpleDateFormat con el formato deseado
                 SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
