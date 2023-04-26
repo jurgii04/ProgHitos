@@ -45,6 +45,21 @@ public class GestorDb {
         return valoresStr;
     }
 
+    public void update(String condicion) {
+        String consulta = "UPDATE pictures SET visits = visits + 1 WHERE " + condicion;
+        if (condicion == null) {
+            consulta = "UPDATE pictures SET visits = visits + 1 WHERE " + condicion;
+        }
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(consulta);
+            st.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) {
         GestorDb gestorDb = new GestorDb();
 

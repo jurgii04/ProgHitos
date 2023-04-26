@@ -127,8 +127,11 @@ public class PictureViewer extends JFrame {
                 Image scaledImg = img.getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
                 icono = new ImageIcon(scaledImg);
                 pictureLabel.setIcon(icono);
+
+                gestorDb.update("title = '" + titulo + "'");
             }
-        });
+        }
+                );
 
         frame.setVisible(true);
     }
